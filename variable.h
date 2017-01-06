@@ -7,28 +7,30 @@
 #include "expression.h"
 
 class varexpression : public Expression {
-	// Var: variable in string
-	std::string var;
+        // Var is the variable
+        std::string var;
 
-	// VALUE OF VAR
-	int value;
+        // VALUE OF VAR
+        int value;
 
-	// assigned = 'N' if SET IS ON, 'N' otherwise
-	char assigned; 
+        // assigned = 'N' if SET IS ON, 'N' otherwise
+        char assigned;
 public:
+        // CTOR
+        varexpression(std::string,char,int);
+       
+	 // METHODS
+        std::string  prettyprint();
+        int evaluation();
+        void set(std::string,int);
+        void unset(std::string);
+        virtual Expression *clone(){	
+        	return new varexpression(var,assigned,value);
+        };
 
-	// CTOR
-	varexpression(std::string);
-
-	// METHODS
-	std::string  prettyprint();
-	int evaluation();
-	void set(std::string,int);
-	void unset(std::string);
-
-	// DTOR
-	~varexpression();
+        // DTOR
+        ~varexpression();
 };
 
-
 #endif
+

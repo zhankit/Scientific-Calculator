@@ -9,10 +9,10 @@
 
 using namespace std;
 
-// STACK VECTOR
+// VECTOR OF STACK
 vector <Expression*> stack;
 
-// TRACK THE CAPACITY OF THE STACk
+// TRACK THE CAPACITY OF THE STACK
 int capacity = 0;
 
 
@@ -26,9 +26,9 @@ int main() {
 
 		if (ss >> n) {
 			loneint * v = new loneint(n);
-			stack.push_back (v);
+			stack.push_back(v);
 			capacity++;
-		} // LONE INT
+		} // LONEINT
 		else if (s == "NEG" || s == "ABS") {
 			unaexpression * u = new unaexpression(s, stack.at(capacity-1));
 			stack.pop_back();
@@ -40,15 +40,15 @@ int main() {
 			stack.pop_back();
 			stack.push_back(b);
 			capacity--;
-		} // BINARYEXPRESSION
+		} // BINARY EXPRESSION
 		else if (s == "done") {
 			break;
-		} // DONE ENCOUNTERED
+		} // Exception
 		else {
-			varexpression * v = new varexpression(s);
+			varexpression * v = new varexpression(s,'N',0);
 			stack.push_back(v);
 			capacity++;
-		} // VARIABLE
+		} // Variable 
 	}
 
 	// Print the expression after all is done
@@ -57,13 +57,10 @@ int main() {
 	// Command interpreter
 	while (cin >> s) {
 		if (s == "eval") {
-			try {
-				cout << stack.at(0)->evaluation() << endl;
-			} // TRY EVALUATION
+			try{	cout << stack.at(0)->evaluation() << endl;}
 			catch (var_error &b) {
-				cout << b.the_name << " has no value." << endl;
-			} // CATCH THE ERROR
-
+                		cout << b.the_name << " has no value." << endl;
+        		}
 		} // EVAL
 		else if (s == "set") {
 			string vartobeset;
@@ -76,15 +73,29 @@ int main() {
 			string vartobeunset;
 			cin >> vartobeunset;
 			stack.at(0)->unset(vartobeunset);
-		} // UNSET 
+		} // UNSET
 		else if (s == "print") {
 			cout << stack.at(0)->prettyprint() << endl;
 		} // PRINT
+		else if (s == "copy") {
+			Expression *thecopy = stack.at(0)->clone();
+			try{
+				cout << thecopy->prettyprint() << endl;
+                        	thecopy->set("x",1);
+				cout << thecopy->prettyprint() << endl;
+				cout << thecopy->evaluation() << endl;
+			}catch (var_error &b) {
+                                
+				cout << b.the_name << " has no value." << endl;
+                        }
+			delete thecopy;
+		} // copy
 	}
-	
-	// DEALLOCATE THE STACK
+
+	// DEALLOCATE THE MEMORY
 	delete stack.at(capacity-1);
-	stack.pop_back();
-	stack.clear();
+        stack.pop_back();
+        stack.clear();
+
 
 }

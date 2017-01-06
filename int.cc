@@ -8,10 +8,12 @@ using namespace std;
 loneint::loneint(int x): Expression(), value(x){};
 
 // METHOD SET
-void loneint::set(string,int) {};
+void loneint::set(string,int) {
+};
 
-// METHOD UNSET
-void loneint::unset(string) {};
+// METHOD SET
+void loneint::unset(string) {
+};
 
 // METHOD PRETTYPRINT
 string loneint::prettyprint () {
@@ -22,6 +24,7 @@ string loneint::prettyprint () {
 int loneint::evaluation() {
 	return value;
 }
+
 
 // DTOR
 loneint::~loneint() {}

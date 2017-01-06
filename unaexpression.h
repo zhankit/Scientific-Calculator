@@ -21,6 +21,9 @@ public:
 	int evaluation();
 	void set(std::string,int);
 	void unset(std::string);
+	virtual Expression *clone(){
+		return new unaexpression(this->Unary,this->x->clone());
+	};
 
 	// DTOR
 	~unaexpression();

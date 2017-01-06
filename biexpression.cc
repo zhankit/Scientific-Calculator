@@ -4,11 +4,10 @@
 #include <string>
 using namespace std;
 
-
 // CTOR
 binexpression::binexpression(string c, Expression *x, Expression *y) :Expression(), op(c), x(x), y(y) {}
 
-// METHOD SET
+// METHOD SET 
 void binexpression::set(string valuetobesetted,int val) {
 	x->set(valuetobesetted, val);
 	y->set(valuetobesetted, val);
@@ -23,19 +22,19 @@ void binexpression::unset(string valuetobesetted) {
 // METHOD EVALUATION
 int binexpression::evaluation() {
 	int result;
-	
+
 	if (op == "-") {
 		result = x->evaluation() - y->evaluation();
-	} // "-"
+	} // '-'
 	else if (op == "+") {
 		result = x->evaluation() + y->evaluation();
-	} // "+"
+	} // '+'
 	else if (op == "*") {
 		result = x->evaluation() * y->evaluation();
-	} // "*"
+	} // '*'
 	else {
 		result = x->evaluation() / y->evaluation();
-	} // "/"
+	} // '/'
 	return result;
 }
 

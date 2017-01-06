@@ -18,6 +18,9 @@ public:
 	int evaluation();
 	void set(std::string,int);
 	void unset(std::string);
+	Expression *clone() {
+		return new loneint(value);
+	};
 
 	// DTOR
 	~loneint();

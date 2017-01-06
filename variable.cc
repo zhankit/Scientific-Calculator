@@ -6,10 +6,8 @@
 
 using namespace std;
 
-// CTOR
-varexpression::varexpression(string x) :var{ x }, Expression() {
-	assigned = 'N'; 
-}
+// DTOR
+varexpression::varexpression(string x,char status,int val) :var{ x },assigned{status},value{val}, Expression() {};
 
 // METHOD SET
 void varexpression::set(string vartobesetted,int x) {
@@ -33,7 +31,7 @@ int varexpression::evaluation() {
 	} // 'Y'
 	else {
 		throw var_error{ var };
-	} // THROW ERROR
+	} // 'N'
 };
 
 // METHOD PRETTYPRINT

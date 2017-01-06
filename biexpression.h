@@ -13,17 +13,22 @@ class binexpression : public Expression {
 	Expression *y;
 
 public:
-	// CTOR
+	// Ctor
 	binexpression(std::string c, Expression *x, Expression *y);
 
-	// METHODS
-	std::string prettyprint();
+	// Methods
+	std::string  prettyprint();
 	int evaluation();
 	void set(std::string,int);
 	void unset(std::string);
+	virtual Expression *clone() {
+		return new binexpression(this->op,this->x->clone(),this->y->clone());
+	};
 
-	// DTOR
+	// Dtor
 	~binexpression();
+
+
 };
 
 #endif
