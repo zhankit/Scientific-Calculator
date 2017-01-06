@@ -3,6 +3,9 @@
 ### Introduction
 This calculator will read int the expression in reverse Polish notation (RPN), also known as postfix notation. 
 
+### Technique Used
+catch-and-try except and polymorphisms 
+
 ### Valid Expression
 1. Lone integer
 2. Variables (letters only, case-sensitive but cannot be done, ABS or NEG)
