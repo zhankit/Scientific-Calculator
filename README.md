@@ -4,7 +4,7 @@
 This calculator will read int the expression in reverse Polish notation (RPN), also known as postfix notation. 
 
 ### Compilation
-Makefile bash script is included. Use the command make in unix environment. It will compiled with the program name WATAN and be excecuted by ./calculator
+Makefile bash script is included. Use the command make in unix environment. It will compiled with the program name WATAN and be excecuted by `./calculator`
 
 ### Technique Used
 catch-and-try except and polymorphisms 
